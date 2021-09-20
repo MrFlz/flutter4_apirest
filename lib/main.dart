@@ -28,8 +28,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final bool _bl_fb = false, _bl_go = false;
-  final Empresa _facebook = Empresa("Facebook","Mark Zuckerberg",500000); //las variables privates deberán llevar final
+  bool _bl_fb = false, _bl_go = false;
+  final Empresa _facebook = Empresa("Facebook","Mark Zuckerberg",500000); //las variables privates deberán llevar final (depende pues final indica que NO VA A CAMBIAR)
   final Empresa _google = Empresa("Google","Larry Page",8000000);
 
   @override
@@ -61,7 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: const Text("Google"), 
               onPressed: (){
-                print("presionaste Google");                
+                print("presionaste Google");     
+                setState(() {
+                  _bl_go=true;
+                  _bl_fb=false;           
+                });
               }, 
             ),
             ElevatedButton(   
@@ -72,7 +76,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               child: const Text("Facebook"), 
               onPressed: (){
-                print("presionaste Facebook");                
+                print("presionaste Facebook");   
+                setState(() {
+                  _bl_go=false;
+                  _bl_fb=true;               
+                });
               }, 
             ),
 
